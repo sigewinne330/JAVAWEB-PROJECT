@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<link rel="icon" type="image/x-icon" sizes="32x32" href="Sigewinne.ico">
+
+<head></head>
+
+<body class="normal">
+    <div class="topright">
+        <form id="info" action="./Test2" method="post">
+            <input type="submit" class="link_top" value="个人信息">
+            <input type="hidden" name="formtype" value="userinfo">
+        </form>
+    </div>
+    <h1>欢迎使用购物网站管理系统</h1>
+    <ul id="nav_2">
+        <button id="201" class="b_nav"><a id="2201" href="div_201" class="nav_2_a">🔑&nbsp;商品管理</a></button>
+        <button id="202" class="b_nav"><a id="2202" href="div_202" class="nav_2_a">📋&nbsp;订单管理</a></button>
+        <button id="203" class="b_nav"><a id="2203" href="div_203" class="nav_2_a">📊&nbsp;报表</a></button>
+    </ul>
+    <div id="nav_div_2">
+        <div id="div_201" class="div_2">
+            <br>
+            商品编号：<input type="text" class="select" id="gno">
+            商品名称：<input type="text" class="select" id="gname">
+            商品状态：
+            <select id="goodstatus">
+                <option value=2 class="status_201">全部</option>
+                <option value=1 class="status_201">销售中</option>
+                <option value=0 class="status_201">已下架</option>
+            </select>
+            <button id="sub_201" class="select_submit">查询</button>
+            <br>
+            <button id="tb_201_add" class="ext_button">新增商品</button>
+            <button id="tb_201_sum" class="ext_button">汇总结果</button>
+            <br>
+            <table id="tb_201" class="t2">
+                <span class="capt">商品列表</span>
+                <thead>
+                    <th id="c1_1">商品编号</th>
+                    <th id="c1_2">商品名称</th>
+                    <th id="c1_3">售价（元）</th>
+                    <th id="c1_4">库存（件）</th>
+                    <th id="c1_5">商品状态</th>
+                    <th id="c1_6">操作</th>
+                </thead>
+                <tbody id="body_201"></tbody>
+            </table>
+            <dialog id="dialog_201_add">
+                <form id="newgood" action="./Test2" method="post" enctype="multipart/form-data">
+                    <h2>新增商品</h2>
+                    名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input id="Gname" name="gname" type="text" class="select"
+                        placeholder="最多不超过150字符"><br>
+                    售价(元)：<input id="Gprice" name="gprice" type="number" class="select" value=0.00 step=0.01
+                        min=0.00><br>
+                    库存(件)：<input id="Gnum" name="gnum" type="number" class="select" value=0><br>
+                    商品图片：<input id="Gimage" type="file" name="gimage" class="select">
+                    <input type="hidden" name="formtype" value="newgood">
+                </form>
+                <button id="d201_add_t" class="ext_button">添加</button>
+                <button id="d201_add_f" class="ext_button_f">取消</button>
+            </dialog>
+            <dialog id="dialog_201_sum">
+                <form id="countgood" action="./Test2" method="post">
+                    <input type="hidden" name="formtype" value="countgood">
+                </form>
+                <h2>库存商品汇总</h2>
+                <p id="classsum"></p>
+                <p id="valuesum">总价：</p>
+                <p id="numsum">总件数：</p>
+                <button id="d201_sum_f" class="ext_button">确定</button>
+            </dialog>
+            <dialog id="add_201">
+                <form id="addgoodnum" action="./Test2" method="post">
+                    <h2>添加商品数量</h2>
+                    <p>商品名称：<label id="addgnamelbl"></label><input id="addgname" name="addgname" type="hidden"></p>
+                    <p>添加数量：<input id="addgnum" name="addgnum" type="number" class="select" value=0 min=0></p>
+                    <input name="formtype" type="hidden" value="addgoodnum">
+                </form>
+                <button id="add_201_t" class="ext_button">添加</button>
+                <button id="add_201_f" class="ext_button_f">取消</button>
+            </dialog>
+            <dialog id="mod_201">
+                <form id="modgoodnum" action="./Test2" method="post" enctype="multipart/form-data">
+                    <h2>修改商品信息</h2>
+                    <p>商品名称：<input id="modgname" name="modgname" type="text" class="select"></p>
+                    <p>售价(元)：<input id="modgprice" name="modgprice" type="number" class="select" step=0.01 min=0.00
+                            value=0.00></p>
+                    商品图片：<input id="modgimage" type="file" name="modgimage" class="select">
+                    <input name="formtype" type="hidden" value="modgoodnum">
+                    <input id="modgoodid" name="modgoodid" type="hidden">
+                </form>
+                <button id="mod_201_t" class="ext_button">确定</button>
+                <button id="mod_201_f" class="ext_button_f">取消</button>
+            </dialog>
+            <form id="delgoodnum" action="./Test2" method="post">
+                <input type="hidden" name="delgid" id="delgid">
+                <input type="hidden" name="gstatus" id="delstatus">
+                <input type="hidden" name="formtype" value="delgoodnum">
+            </form>
+            <dialog id="del_201">
+                <p>⚠️确定要将此商品下架吗？</p>
+                <button id="del_201_t" class="ext_button">确定</button>
+                <button id="del_201_f" class="ext_button_f">取消</button>
+            </dialog>
+            <dialog id="open_201">
+                <p>⚠️确定要将此商品上架吗？</p>
+                <p>上架前请确保该商品有足够的库存供应！</p>
+                <button id="open_201_t" class="ext_button">确定</button>
+                <button id="open_201_f" class="ext_button_f">取消</button>
+            </dialog>
+        </div>
+        <div id="div_202" class="div_2">
+            订单编号：<input id="orderno" type="text" class="select">
+            商品编号：<input id="goodno" type="text" class="select">
+            下单用户：<input id="userno" type="text" class="select">
+            订单状态：
+            <select id="orderstatus">
+                <option value='全部' class="status_202">全部</option>
+                <option value='已支付' class="status_202">已支付</option>
+                <option value='已派送' class="status_202">已派送</option>
+                <option value='已收货' class="status_202">已收货</option>
+            </select><br>
+            下单时间：<input type="date" class="select" id="BSdate" min="2000-01-01" max="2099-12-31"><input type="time"
+                class="select" id="BStime" value="00:00:00" min="00:00:00" max="23:59:59">至<input type="date"
+                class="select" id="BEdate" min="2000-01-01" max="2099-12-31"><input type="time" class="select"
+                id="BEtime" value="23:59:59" min="00:00:00" max="23:59:59">
+            <input id="ordersearch" type="button" class="select_submit" value="查询">
+            <br>
+            <table id="tb_202" class="t2">
+                <span class="capt">订单列表</span>
+                <thead>
+                    <th id="c2_0">订单编号</th>
+                    <th id="c2_1">商品编号</th>
+                    <th id="c2_2">商品数量</th>
+                    <th id="c2_3">订单总额</th>
+                    <th id="c2_4">下单用户</th>
+                    <th id="c2_5">订单状态</th>
+                    <th id="c2_6">操作</th>
+                </thead>
+                <tbody id="body_202">
+                </tbody>
+            </table>
+            <dialog id="info_202">
+                <h2>订单详情</h2>
+                <p>订单编号：<span id="orderid"></span></p>
+                <p>商品编号：<span id="ordername"></span></p>
+                <p>下单用户：<span id="orderuserid"></span></p>
+                <p>创建时间：<span id="time1info"></span></p>
+                <p>支付时间：<span id="time2info"></span></p>
+                <p>发货时间：<span id="time3info"></span></p>
+                <p>收货时间：<span id="time4info"></span></p>
+                <form id="orderdetail" action="./Test2" method="post">
+                    <input type="hidden" name="formtype" value="orderdetail">
+                    <input type="hidden" name="orderid" id="orderidinput">
+                </form>
+                <button id="info_202_f" class="ext_button">确定</button>
+            </dialog>
+            <dialog id="sent_202">
+                <p>⚠️请确认该订单已发货。</p>
+                <p>发货后无法撤回操作!</p>
+                <form id="deliver" action="./Test2" method="post">
+                    <input type="hidden" name="formtype" value="deliver">
+                    <input type="hidden" name="orderid" id="deliverinput">
+                </form>
+                <button id="sent_202_t" class="ext_button">确定</button>
+                <button id="sent_202_f" class="ext_button_f">取消</button>
+            </dialog>
+        </div>
+        <div id="div_203" class="div_2">
+
+            <span class="sp_203">汇总模式</span>
+            <input type="radio" name="mode" value=0 class="mode">按年度计算
+            <input type="radio" name="mode" value=1 class="mode">按月度计算
+            <input type="radio" name="mode" value=2 class="mode" checked>按天计算
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="sp_203">汇总数据的时间范围</span>
+            <span id="mode_0"><select id="year_203"></select>年</span>
+            <span id="mode_1"><select id="month_203"></select>月</span>
+            <span id="mode_2"><select id="day_203"></select>日</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="logsearch" type="button" class="select_submit" value="查询">
+            <br>
+            <table id="tb_203" class="t2">
+                <span class="capt">营收情况汇总</span>
+                <thead>
+                    <th id="c3_1">商品编号</th>
+                    <th id="c3_2">商品名称</th>
+                    <th id="c3_3">商品销售数量</th>
+                    <th id="c3_4">商品销售总额</th>
+                </thead>
+                <tbody id="body_203">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+<link type="text/css" rel="stylesheet" href="Index.css" />
+<script type="text/javascript" src="BIndex.js"></script>
+
+</html>
