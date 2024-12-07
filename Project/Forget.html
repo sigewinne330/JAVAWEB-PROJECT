@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<meta lang="ch" charset="UTF-8">
+
+<link rel="icon" type="image/x-icon" sizes="32x32" href="Sigewinne.ico">
+
+<head>
+    <h1>修改用户密码</h1>
+</head>
+
+<body class="regpage">
+
+    <div class="reg">
+
+        <form id="register" action="./Test2" method="post">
+            <label for="username" class="reglabel">用户名:</label><br><br>
+            <input id="username" name="username" type="text" class="text">
+            <p id="f1"></p>
+            <label for="password" class="reglabel">新密码(8-32位，包含数字、大小写字母):</label><br><br>
+            <input id="password" name="password" type="password" class="text">
+            <p id="f2"></p>
+            <label for="verify" class="reglabel">确认新密码:</label><br><br>
+            <input id="verify" name="verify" type="password" class="text">
+            <p id="f3"></p>
+            <input id="submitbtn" class="enter" type="submit" value="修改">
+            <button class="back" type="button" id="back">返回</button>
+            <input type="hidden" name="formtype" value="forget">
+        </form>
+        <p id="pass"></p>
+    </div>
+</body>
+<link type="text/css" rel="stylesheet" href="Index.css" />
+<script type="text/javascript" src="Forget.js"></script>
+
+</html>

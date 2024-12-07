@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<meta lang="ch" charset="UTF-8">
+
+<link rel="icon" type="image/x-icon" sizes="32x32" href="Sigewinne.ico">
+
+<head>
+    <h1>商品详情</h1>
+</head>
+
+<body>
+    <div class="detail">
+        <img id="image" class="dimg" src=""></img>
+        <p id="gname"></p>
+        <h2>商品信息</h2>
+        <p id="provider">供货商：</p>
+        <p id="num">库存（件）：</p>
+        <label id="pricelabel">单价（元）:</label>
+        <label id="price"></label>
+        <h2>选项</h2>
+        <form id="buy" action="./Test2" method="post">
+            <label id="prompt" for="quantity">购买数量（件）：</label>
+            <input id="selectnum" class="text" name="quantity" value=0 min=0 type="number" step="1"><br><br>
+            <button id="submitbtn" type="button">加入订单</button>
+            <input type="hidden" name="formtype" value="buy">
+            <input id="good" type="hidden" name="goodid">
+            <input id="goodprice" type="hidden" name="goodprice">
+            <button id="back" type="button">返回</button>
+        </form>
+    </div>
+    <dialog id="purchase">
+        <p>✅商品已添加,购物车更新完成！</p>
+        <button id="buybtn" class="select_submit">确定</button>
+    </dialog>
+</body>
+<link type="text/css" rel="stylesheet" href="Index.css" />
+<script type="text/javascript" src="Detail.js"></script>
+
+</html>
