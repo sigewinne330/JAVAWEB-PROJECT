@@ -17,3 +17,5 @@
 · 项目所需的数据库文件位于```Sql\SHOP.sql```
 
 · 在Tomcat上部署时Project文件夹放在Tomcat目录下```.\webapps```目录中
+
+· 目前部署地址已无法访问
